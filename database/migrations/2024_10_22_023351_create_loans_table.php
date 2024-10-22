@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('loans', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_loan');
+            $table->text('description')->nullable();
+            $table->date('loan_date');
+            $table->date('due_date');
+            $table->date('return_date')->nullable();
+            $table->foreignId('member_id')->constrained('members', 'id_member')->onDelete('cascade');
+            $table->foreignId('book_id')->constrained('books', 'id_book')->onDelete('cascade');
+            $table->foreignId('librarian_id')->nullable()->constrained('librarians', 'id_librarian')->onDelete('set null');
             $table->timestamps();
         });
     }

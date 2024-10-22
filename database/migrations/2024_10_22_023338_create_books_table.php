@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_book');
+            $table->string('title', 100);
+            $table->string('author', 50)->nullable();
+            $table->string('publisher', 50)->nullable();
+            $table->integer('stock')->check('stock >= 0');
+            $table->integer('publication_year')->check('publication_year >= 1000 AND publication_year <= extract(year from now())');
+            $table->string('isbn', 13)->unique()->nullable();
+            $table->foreignId('category_id')->nullable()->constrained('categories', 'id_category')->onDelete('set null');
             $table->timestamps();
         });
     }
