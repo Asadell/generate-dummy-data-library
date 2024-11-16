@@ -17,7 +17,7 @@ class MemberFactory extends Factory
         return [
             'name' => $this->faker->name,
             'phone' => preg_replace('/[^0-9]/', '', $this->faker->phoneNumber),
-            'email' => $this->faker->unique()->email,
+            'email' => $this->faker->email,
             'address' => $this->faker->address,
             'gender' => $this->faker->randomElement(['M', 'F']),
             'membership_start' => $this->faker->date,

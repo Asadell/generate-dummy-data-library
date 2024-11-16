@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('publisher', 50)->nullable();
             $table->integer('stock')->check('stock >= 0');
             $table->integer('publication_year')->check('publication_year >= 1000 AND publication_year <= extract(year from now())');
-            $table->string('isbn', 13)->unique()->nullable();
+            $table->string('isbn', 13)->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories', 'id_category')->onDelete('set null');
             $table->timestamps();
         });

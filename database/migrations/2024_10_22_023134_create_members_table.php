@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id('id_member');
             $table->string('name', 100);
-            $table->string('phone', 20)->unique();
-            $table->string('email', 50)->unique();
+            $table->string('phone', 20);
+            $table->string('email', 50);
             $table->string('address', 255)->nullable();
             $table->char('gender', 1)->check("gender in ('M', 'F')");
             $table->date('membership_start');

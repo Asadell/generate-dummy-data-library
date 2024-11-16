@@ -16,6 +16,7 @@ class LibrarianFactory extends Factory
     {
         return [
             'hire_date' => $this->faker->date,
+            'name' => $this->faker->name,
             'salary' => $this->faker->numberBetween(2000000, 10000000),
             'phone_number' => preg_replace('/[^0-9]/', '', $this->faker->phoneNumber),
         ];
